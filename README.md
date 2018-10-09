@@ -12,7 +12,7 @@ Jinja2 coding is applied within html to serve data from a Mongo DB database to t
  
 ## Task Manager Project Set-Up
 
-- Module pre-requisites are found in the <a href="https://github.com/Kremzeeq/TaskManagerApp/blob/master/requirements.txt>requirements.txt"</a> file
+- Module pre-requisites are found in the <a href="https://github.com/Kremzeeq/TaskManagerApp/blob/master/requirements.txt"></a> file
 - Opening the project in PyCharm should prompt for modules from the file to be installed
 - Alternatively use **pip install** for requirements.txt in the command line
 
