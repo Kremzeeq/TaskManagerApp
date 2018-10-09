@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    {% include 'html_dependencies.html' %}
+</head>
+<body>
+
+<nav class="navbar navbar-toggleable-* navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Task Manager App</a>
+        <div class="navbar-header">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#user_menu" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="user_menu">
+          {% if session['email'] %}
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('users.logout_user') }}">Log Out</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('tasks.task_portal') }}">Tasks Portal</a>
+            </li>
+        </ul>
+          {% else %}
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('users.sign_up_email') }}">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('users.login_user') }}">Log In</a>
+          </li>
+        </ul>
+          {% endif %}
+      </div>
+            </div>
+</nav>
+
+<div class="content container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

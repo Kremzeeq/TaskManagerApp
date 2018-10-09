@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-5">Authorisation Portal</h1>
+    <hr class="my-4">
+    <p class="lead">Please enter your email and authorisation code</p>
+    <div class="form-size">
+        <form action="{{ url_for('users.authenticate_user') }}" method="post">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+            </div>
+            <hr class="my-4">
+            <div class="form-group">
+                <label for="password">Authorisation Code</label>
+                <div class="alert alert-info fade in alert-dismissible show">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" style="font-size:20px">×</span>
+                </button>
+                Please enter the authorisation code from your email here.
+            </div>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Authorisation Code">
+            </div>
+
+            <hr class="my-4">
+            <button type="submit" class="btn btn-primary btn-dark">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

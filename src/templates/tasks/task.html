@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-5">Task: {{task.task_name}} </h1>
+        <hr class="my-4">
+        <div class="row justify-content between align-items-stretch my-row">
+            <div class="col-6 my-col align-self-start">
+                <p class="text">Status : <strong> {{ task.status }}</strong></p>
+                <p class="text">Priority: <strong> {{ task.priority}}</strong></p>
+                <p class="text">Completed by : <strong> {{ task.completed_by }}</strong></p>
+            </div>
+            <div class="col-6 my-col align-self-start">
+                <p class="text">Date Created : <strong>{{ task.date_created.strftime("%d/%m/%Y at %H:%M")}}</strong></p>
+                <p class="text">Date Updated : <strong>{{ task.date_updated.strftime("%d/%m/%Y at %H:%M")}}</strong></p>
+            </div>
+         </div>
+        <hr class="my-4">
+        <h5><strong>Description</strong></h5>
+        <p class="text">{{ task.description }}</p>
+        <hr class="my-4">
+        {% if session['user_id'] == task.user_id_task_owner %}
+        <a class="btn btn-warning" href="{{ url_for('tasks.edit_task', task_id=task._id)}}">Edit</a>
+        <a class="btn btn-danger" href="{{ url_for('tasks.delete_task', task_id=task._id)}}">Delete</a>
+        {% endif %}
+    </div>
+{% endblock %}

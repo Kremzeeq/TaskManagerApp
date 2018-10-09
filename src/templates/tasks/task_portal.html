@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="#alltasks" data-toggle="tab">All Tasks</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#taskstodo" data-toggle="tab">Hide Completed Tasks</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="alltasks" class="tab-pane fade show active" role="tabpanel">
+            <div class="jumbotron">
+                <h3 class="display-5">Tasks Portal: All Tasks</h3>
+                <hr class="my-4">
+                <div class="list-group">
+                    {% for task in tasks %}
+                    <a href="{{ url_for('tasks.get_task_page', task_id=task._id)}}" class="list-group-item {{ 'list-group-item-warning' if not task.status_boolean else ''}}">
+                        <div class="list-group list-group-item-info">
+                            <h4 class="list-group-item-heading"> {{task.task_name}}</h4>
+                            <p class="list-group-item-text">Status: <strong> {{ task.status }}</strong></p>
+                            <p class="list-group-item-text">Priority: <strong> {{ task.priority }}</strong></p>
+                            <p class="list-group-item-text">Date Created: <strong> {{ task.date_created.strftime("%d/%m/%Y at %H:%M") }}</strong></p>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+                <hr class="my-4">
+                <a class="btn btn-success" href="{{ url_for('tasks.create_task')}}" role="button">Add</a>
+            </div>
+        </div>
+        <div id="taskstodo" class="tab-pane fade" role="tabpanel">
+            <div class="jumbotron">
+                <h3 class="display-5">Tasks Portal: To Do</h3>
+                <hr class="my-4">
+                <div class="list-group">
+                    {% for task in tasks if not task.status_boolean %}
+                    <a href="{{ url_for('tasks.get_task_page', task_id=task._id)}}" class="list-group-item">
+                        <div class="list-group list-group-item-info">
+                            <h4 class="list-group-item-heading"> {{task.task_name}}</h4>
+                            <p class="list-group-item-text">Status: <strong> {{ task.status }}</strong></p>
+                            <p class="list-group-item-text">Priority: <strong> {{ task.priority }}</strong></p>
+                            <p class="list-group-item-text">Date Created: <strong> {{ task.date_created.strftime("%d/%m/%Y at %H:%M") }}</strong></p>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+                <hr class="my-4">
+                <a class="btn btn-success" href="{{ url_for('tasks.create_task')}}" role="button">Add</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

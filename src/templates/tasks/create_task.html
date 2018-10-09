@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron" xmlns="http://www.w3.org/1999/html">
+  <h1 class="display-5">Create New Task</h1>
+    <hr class="my-4">
+    <div class="form-size">
+        <form method="Post">
+            <div class="form-group">
+                <label for="task_name">Task Name</label>
+                <input type="text" class="form-control" id="task_name" name="task_name" placeholder="Task Name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea type="text" class="form-control" rows="5" id="description" name="description" placeholder="Please enter description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <select class="form-control" id="priority" name="priority">
+                    <option>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>
+                </select>
+            </div>
+            <hr class="my-4">
+            <button type="submit" class="btn btn-dark">Create</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

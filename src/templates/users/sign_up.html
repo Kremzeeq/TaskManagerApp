@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="jumbotron">
+      <h1 class="display-5">Sign Up</h1>
+        <hr class="my-4">
+        <p class="lead">Sign up with your email to use the Task Manager</p>
+        <form action="{{ url_for('users.sign_up_email') }}" method="post">
+            <div class="form-size">
+                <div class="form-group">
+                    <div class="alert alert-info fade in alert-dismissible show">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true" style="font-size:20px">×</span>
+                        </button>
+                        Please note a verification code will be sent to your email.
+                    </div>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email"><br>
+                    <hr class="my-4">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-dark">Submit</button>
+        </form>
+    </div>
+{% endblock %}
