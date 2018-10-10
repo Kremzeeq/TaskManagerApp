@@ -1,7 +1,7 @@
 # Task Manager App
 Task logging python tool, structured as a Flask and REST API application
 
-**Task Manager App** is a task loggingpython tool, structured as a Flask and REST API application.
+**Task Manager App** is a task logging python tool, structured as a Flask and REST API application.
 Jinja2 coding is applied within html to serve data from a Mongo DB database to the front end-user, who can create, edit and delete tasks.
 
 ## Features
