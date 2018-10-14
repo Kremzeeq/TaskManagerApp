@@ -64,7 +64,7 @@ https://docs.mongodb.com/manual/administration/install-community/
 
 - These modules will specify where exceptions may be raised as part of the user jounrey e.g. when they enter an incorrect password, or they 'tick' that a task has been done but do not specify who completed the task. 
 
-- Test modules should be configured e.g. in Pycharm, to run from the following location: href="https://github.com/Kremzeeq/TaskManagerApp/blob/master/src/tests">TaskManagerApp/src/tests</a>
+- Test modules should be configured e.g. in Pycharm, to run from the following location: <a href="https://github.com/Kremzeeq/TaskManagerApp/blob/master/src/tests">TaskManagerApp/src/tests</a>
 
 - Within the Run/Debug Configuration for the module in Pycharm, **-m pytest** can be specified under **Interpreter Options**
 
