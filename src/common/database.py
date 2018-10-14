@@ -11,7 +11,7 @@ class Database(object):
 
     @staticmethod
     def insert(collection, data):
-        Database.DATABASE[collection].insert(data)
+        Database.DATABASE[collection].insert_one(data)
 
     @staticmethod
     def find(collection, query):
@@ -26,9 +26,13 @@ class Database(object):
         Database.DATABASE[collection].delete_one({"id": id})
 
     @staticmethod
+    def delete_many(collection, query):
+        Database.DATABASE[collection].delete_many(query)
+
+    @staticmethod
     def update(collection, query, data):
         Database.DATABASE[collection].update(query, data, upsert=True)
 
     @staticmethod
     def remove(collection, query):
-        Database.DATABASE[collection].remove(query)
+        Database.DATABASE[collection].delete_one(query)

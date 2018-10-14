@@ -14,6 +14,9 @@ class UserDoesNotExistError(UserError):
 class IncorrectAuthCodeCode(UserError):
     pass
 
+class IncorrectPassword(UserError):
+    pass
+
 class PoorPasswordError(UserError):
     pass
 

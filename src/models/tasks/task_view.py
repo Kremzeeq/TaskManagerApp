@@ -1,6 +1,7 @@
 from flask import Blueprint, request, session, url_for, render_template
 from werkzeug.utils import redirect
 from src.models.tasks.task_controller import Task
+import src.models.tasks.task_errors as TaskErrors
 from src.models.users.user_controller import User
 import src.models.users.user_decorators as user_decorators
 import datetime
@@ -21,8 +22,10 @@ def create_task():
         priority = request.form['priority']
         description = request.form['description']
         task = Task(task_name, description, priority)
+        task.check_task_id_length()
+        task.check_priority_category()
         email = session['email']
-        task.user_id_task_owner = User.find_user_by_email(email)
+        task.user_id_task_owner = User.find_user_id_by_email(email)
         task.save_to_db()
         return redirect(url_for('tasks.task_portal'))
     return render_template('tasks/create_task.html')
@@ -39,19 +42,19 @@ def edit_task(task_id):
     task = Task.find_by_id(task_id)
     if request.method == 'POST':
         task.priority = request.form['priority']
+        task.check_priority_category()
         task.description = request.form['description']
         task.completed_by = request.form['completed_by']
         task.date_updated = datetime.datetime.utcnow()
         status_boolean = request.form.get('status_boolean')
-        if len(task.completed_by) > 0 or status_boolean == "1":
-            status_boolean = True
-        elif task.completed_by == "" and status_boolean == None:
-            status_boolean = False
-        else:
-            pass
-        task.status = task.find_status_text(status_boolean)
-        task.status_boolean = status_boolean
-        task.save_to_db()
+        task.find_status_boolean(status_boolean)
+        try:
+            task.check_completed_by_empty_and_true_status_boolean()
+            task.check_completed_by_not_empty_and_false_status_boolean()
+            task.find_status_text(status_boolean)
+            task.save_to_db()
+        except TaskErrors.TaskError as e:
+            return e.message
         return redirect(url_for('tasks.task_portal'))
     return render_template('tasks/edit_task.html', task=task)
 

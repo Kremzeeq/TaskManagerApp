@@ -40,7 +40,7 @@ def register_user():
         try:
             if User.register_user(email, password):
                 session['email'] = email
-                session['user_id'] = User.find_user_by_email(email)
+                session['user_id'] = User.find_user_id_by_email(email)
                 return redirect(url_for("tasks.task_portal"))
         except UserErrors.UserError as e:
             return e.message
@@ -54,7 +54,7 @@ def login_user():
         try:
             if User.validate_user_login(email, password):
                 session['email'] = email
-                session['user_id'] = User.find_user_by_email(email)
+                session['user_id'] = User.find_user_id_by_email(email)
                 return redirect(url_for("tasks.task_portal"))
         except UserErrors.UserError as e:
             return e.message
