@@ -57,7 +57,7 @@ https://docs.mongodb.com/manual/administration/install-community/
 
 ## Running tests for the application
 
-- Test modules for the application are focussed on testing<a href="https://github.com/Kremzeeq/TaskManagerApp/tree/master/src/models">models</a> for creating user accounts and tasks within the application using pytest:
+- Test modules for the application are focussed on testing<a href="https://github.com/Kremzeeq/TaskManagerApp/tree/master/src/models"> models</a> for creating user accounts and tasks within the application using pytest:
 
 - <a href="https://github.com/Kremzeeq/TaskManagerApp/blob/master/src/tests/test_user_pytest.py">test_user_pytest.py</a>
 - <a href="https://github.com/Kremzeeq/TaskManagerApp/blob/master/src/tests/test_task_pytest.py">test_task_pytest.py</a>
