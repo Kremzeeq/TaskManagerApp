@@ -26,7 +26,6 @@ def test_create_new_user_with_email_already_in_db(init_db):
     with pytest.raises(UserErrors.UserAccountAlreadyExists):
         new_user.check_user_data_is_not_none(user_data)
     new_user.delete_by_email()
-    #Database.remove(UserConstants.COLLECTION,{"email":new_user.email})
 
 def test_login_with_no_email_in_db(init_db):
     new_user = User("test.test@test.com")
